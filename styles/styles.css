@@ -10,18 +10,20 @@
  * governing permissions and limitations under the License.
  */
 
-:root {
+ :root {
   /* colors */
   --background-color: white;
-  --light-color: #f8f8f8;
+  --light-color: #f6f6f6;
   --dark-color: #505050;
+  --title-color: #323232;
   --text-color: #131313;
   --link-color: #3b63fb;
   --link-hover-color: #1d3ecf;
+  --light-gray-color: #e2e2e2;
 
   /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --body-font-family: delivery, sans-serif;
+  --heading-font-family: delivery, sans-serif;
 
   /* body sizes */
   --body-font-size-m: 22px;
@@ -72,7 +74,8 @@
 
 body {
   display: none;
-  margin: 0;
+  max-width: 1640px;
+  margin: auto;
   background-color: var(--background-color);
   color: var(--text-color);
   font-family: var(--body-font-family);
@@ -107,10 +110,11 @@ h6 {
   margin-top: 0.8em;
   margin-bottom: 0.25em;
   font-family: var(--heading-font-family);
+  color: var(--title-color);
   font-weight: 600;
   line-height: 1.25;
   scroll-margin: 40px;
-    color: blue;
+  font-stretch: condensed;
 }
 
 h1 { font-size: var(--heading-font-size-xxl); }
@@ -143,6 +147,11 @@ pre {
   white-space: pre;
 }
 
+.landing-page-two-columns > main {
+  max-width: 1400px;
+  margin: auto;
+}
+
 main > div {
   margin: 40px 16px;
 }
@@ -173,29 +182,36 @@ button {
   display: inline-block;
   max-width: 100%;
   margin: 12px 0;
-  border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
   font-family: var(--body-font-family);
   font-style: normal;
-  font-weight: 500;
   line-height: 1.25;
   text-align: center;
   text-decoration: none;
-  background-color: var(--link-color);
-  color: var(--background-color);
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: background-color .2s ease, color .2s ease;
+  font-weight: bold;
+  border: 0;
+  border-radius: 4px;
+  padding: 10px 32px;
+  color: #fff;
+  background-color: #d40511;
 }
 
 a.button:hover,
 a.button:focus,
 button:hover,
 button:focus {
-  background-color: var(--link-hover-color);
-  cursor: pointer;
+  color: #fff;
+  background-color: #eb131e;
+}
+
+a.button:active,
+button:active{
+  background-color: #9a0000;
+  color: #fff;
 }
 
 button:disabled,
@@ -206,9 +222,26 @@ button:disabled:hover {
 
 a.button.secondary,
 button.secondary {
-  background-color: unset;
-  border: 2px solid currentcolor;
-  color: var(--text-color);
+  border: 1px solid #d40511;
+  font-weight: normal;
+  color: #d40511;
+  background-color: #fff;
+}
+
+a.button.secondary:hover,
+button.secondary:hover,
+a.button.secondary:focus,
+button.secondary:focus {
+  background-color: #d40511;
+  border-color: #d40511;
+  color: #fff;
+}
+
+a.button.secondary:active,
+button.secondary:active{
+  border-color: #9a0000;
+  background-color: #9a0000;
+  color: #fff;
 }
 
 main img {
@@ -229,6 +262,10 @@ main img {
 }
 
 /* sections */
+.section {
+  clear: both;
+}
+
 main > .section {
   margin: 40px 0;
 }
@@ -255,4 +292,129 @@ main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@media (width >= 900px) {
+  .section-float-left {
+    float: left;
+    clear: none;
+  }
+
+  .section-float-right {
+    float: right;
+    clear: none;
+  }
+
+  .section-float-new-line {
+    display: block;
+    clear: both !important;
+  }
+}
+
+.section-width-full {
+  width: 100%;
+}
+
+@media (width >= 900px) {
+  .section-width-half {
+    width: 50%;
+  }
+}
+
+.padding-small {
+  padding: 10px;
+}
+
+.padding-large {
+  padding: 40px;
+}
+
+.no-margin {
+  margin-top: 0;
+}
+
+.margin-small {
+  margin-top: 10px;
+}
+
+.margin-large {
+  margin-top: 40px;
+}
+
+main::before,main::after {
+  display: table;
+  content: " ";
+}
+
+main::after {
+  clear: both;
+}
+
+.title-underline h1,
+.title-underline h2,
+.title-underline h3,
+.title-underline h4,
+.title-underline h5,
+.title-underline h6 {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+.title-underline h1::after,
+.title-underline h2::after,
+.title-underline h3::after,
+.title-underline h4::after,
+.title-underline h5::after,
+.title-underline h6::after {
+  content: ".";
+  color: rgb(0 0 0 / 0%);
+  z-index: -1;
+  display: block;
+  position: absolute;
+  transform: translateY(round(-0.1em, 1px));
+  top: 0;
+  width: 50%;
+  border-bottom: .12em solid #d40511;
+}
+
+.landing-page-two-columns h1 {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+.landing-page-two-columns h1::after {
+  content: ".";
+  color: transparent;
+  z-index: -1;
+  display: block;
+  position: absolute;
+  transform: translateY(round(-0.1em, 1px));
+  top: 0;
+  width: 50%;
+  border-bottom: .12em solid #d40511;
+}
+
+.landing-page-two-columns img {
+  display: block;
+  margin: 0 auto;
+}
+
+.center-button-alignment a.button{
+  display: block;
+  min-width: min(400px, 100%);
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.background-color-light-gray {
+  background-color: var(--light-gray-color);
 }
