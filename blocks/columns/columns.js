@@ -13,6 +13,28 @@ export default function decorate(block) {
           picWrapper.classList.add('columns-img-col');
         }
       }
+
+      const icon = col.querySelector('span.icon');
+      if (icon && block.classList.contains('icon-bullets')) {
+        col.classList.add('icon-bullet');
+
+        const iconParent = icon.parentElement;
+
+        if (iconParent !== col) {
+          iconParent.remove();
+        } else {
+          icon.remove();
+        }
+
+        const contentWrapper = document.createElement('div');
+
+        while (col.firstChild) {
+          contentWrapper.appendChild(col.firstChild);
+        }
+
+        col.appendChild(icon);
+        col.appendChild(contentWrapper);
+      }
     });
   });
 }

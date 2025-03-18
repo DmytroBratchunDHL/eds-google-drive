@@ -31,3 +31,16 @@
     order: unset;
   }
 }
+
+.icon-bullet {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.icon-bullet .icon {
+  width: 40px;
+  height: 40px;
+  margin-top: 26px;
+  flex-shrink: 0;
+}
